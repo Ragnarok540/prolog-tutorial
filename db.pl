@@ -48,8 +48,17 @@ get_grandchild :-
   write('Alberts grandchild is '),
   write(Y), nl.
 
-get_parent :-
+get_grandparent :-
   parent(X, carl),
   parent(X, charlie),
   format('~w ~s grandparent ~n', [X, "is the"]).
 
+brother(bob, bill).
+
+get_uncle :-
+  parent(X, carl), brother(X, Y),
+  format('~w ~s uncle ~n', [Y, "is the"]).
+
+grand_parent(X, Y) :-
+  parent(Z, X),
+  parent(Y, Z).
