@@ -62,3 +62,28 @@ get_uncle :-
 grand_parent(X, Y) :-
   parent(Z, X),
   parent(Y, Z).
+
+blushes(X) :- human(X).
+
+human(derek).
+
+stabs(tybalt, mercutio, sword).
+
+hates(romeo, X) :-
+  stabs(X, mercutio, sword).
+
+what_grade(5) :-
+  write('Go to kindergarden').
+
+what_grade(6) :-
+  write('Go to 1st Grade').
+
+what_grade(Other) :-
+  Grade is Other - 5,
+  format('Go to grade ~w', [Grade]).
+
+female_report :-
+  write('report of known females'), nl, nl,
+  female(X),
+  write(X), nl,
+  fail.
