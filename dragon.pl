@@ -1,3 +1,5 @@
+% set_prolog_flag(double_quotes, chars).
+
 seq([]) --> [].
 seq([E|Es]) --> [E], seq(Es).
 
