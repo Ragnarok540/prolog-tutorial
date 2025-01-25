@@ -22,57 +22,47 @@
 % cigarets [sic]. One other thing: in statement 6, right means your right.
 % — Life International, December 17, 1962
 
-nationality(englishman).
-nationality(spaniard).
-nationality(ukrainian).
-nationality(norwegian).
-nationality(japanese).
+% Where does the zebra live?
+% Puzzle solution written by Claude Sammut.
 
-color(red).
-color(green).
-color(ivory).
-color(yellow).
-color(blue).
+zebra(ShowResult) :-
+  houses(Houses),
+  member(house(red, english, _, _, _), Houses),
+  member(house(_, spanish, dog, _, _), Houses),
+  member(house(green, _, _, coffee, _), Houses),
+  member(house(_, ukrainian, _, tea, _), Houses),
+  right_of(house(green,_,_,_,_), house(ivory,_,_,_,_), Houses),
+  member(house(_, _, snails, _, old_gold), Houses),
+  member(house(yellow, _, _, _, kools), Houses),
+  Houses = [_, _, house(_, _, _, milk, _), _,_],
+  Houses = [house(_, norwegian, _, _, _)|_],
+  next_to(house(_,_,_,_,chesterfields), house(_,_,fox,_,_), Houses),
+  next_to(house(_,_,_,_,kools), house(_,_,horse,_,_), Houses),
+  member(house(_, _, _, orange_juice, lucky_strikes), Houses),
+  member(house(_, japanese, _, _, parliaments), Houses),
+  next_to(house(_,norwegian,_,_,_), house(blue,_,_,_,_), Houses),
+  member(house(_, _, zebra, _, _), Houses),
+  member(house(_, _, _, water, _), Houses),
+  (   ShowResult = true ->
+      print_houses(Houses)
+  ;   true).
 
-pet(dog).
-pet(snails).
-pet(fox).
-pet(horse).
-pet(zebra).
+houses([
+  house(_, _, _, _, _),
+  house(_, _, _, _, _),
+  house(_, _, _, _, _),
+  house(_, _, _, _, _),
+  house(_, _, _, _, _)
+]).
 
-drink(coffee).
-drink(tea).
-drink(milk).
-drink(orange_juice).
-drink(water).
+right_of(A, B, [B, A | _]).
+right_of(A, B, [_ | Y]) :- right_of(A, B, Y).
 
-cigarette(old_gold).
-cigarette(kools).
-cigarette(chesterfields).
-cigarette(lucky_strike).
-cigarette(parliaments).
+next_to(A, B, [A, B | _]).
+next_to(A, B, [B, A | _]).
+next_to(A, B, [_ | Y]) :- next_to(A, B, Y).
 
-location(first).
-location(second).
-location(third).
-location(fourth).
-location(fifth).
-
-lives(nationality(N), color(C)).
-owner(nationality(N), pet(P)).
-drinks(nationality(N), drink(D)).
-smokes(nationality(N), cigarette(C)).
-place(nationality(N), location(C)).
-
-% 2.
-lives(englishman, red).
-
-% 3.
-owner(spaniard, dog).
-
-% 4.
-
-% 5.
-drinks(ukrainian, tea).
-
-
+print_houses([]).
+print_houses([A|B]) :-
+  write(A), nl,
+  print_houses(B).
