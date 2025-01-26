@@ -1,3 +1,5 @@
+% https://www.101computing.net/solving-a-zebra-puzzle-using-prolog/
+
 % Three kids went to a superheroes fancy dress birthday party.
 % The names of the three kids are Ethan, Ali and Anya.
 % They dressed up as Spiderman, Captain America and Iron Man.
