@@ -103,6 +103,18 @@ set(InList, OutList) :-
 
 % set([2, 2, foo, 1, foo, [], []], X).
 
-
+flattenA([], []).
+flattenA(List, Flat) :-
+  List = [H|T],
+  \+ is_list(H),
+  flattenA(T, FT),
+  append([H], FT, Flat).
+flattenA(List, Flat) :-
+  List = [H|T],
+  is_list(H),
+  flattenA(H, FH),
+  flattenA(T, FT),
+  append(FH, FT, Flat).
 
 % flattenA([a,b,[c,d],[[1,2]],foo], Flat).
+% flattenA([a,b,[[[[[[[c,d]]]]]]],[[1,2]],foo,[]], Flat).
