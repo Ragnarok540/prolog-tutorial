@@ -55,3 +55,54 @@ swapfl(List1, List2) :-
   toptail(List2, TopTail), !.
 
 % swapfl([a,b,c,d,e],T).
+
+street([
+  house(_, _, _),
+  house(_, _, _),
+  house(_, _, _)
+]).
+
+right_of(A, B, [B, A|_]).
+right_of(A, B, [_|Y]) :-
+  right_of(A, B, Y).
+
+left_of(A, B, [A, B|_]).
+left_of(A, B, [_|Y]) :-
+  left_of(A, B, Y).
+
+print_street([]).
+print_street([A|B]) :-
+  write(A), nl,
+  print_street(B).
+
+zebra(ShowResult) :-
+  street(Houses),
+  member(house(red, english, _), Houses),
+  member(house(_, spanish, jaguar), Houses),
+  right_of(house(_, japanese, _), house(_, _, snail), Houses),
+  left_of(house(_, _, snail), house(blue, _, _), Houses),
+  member(house(green, _, _), Houses),
+  member(house(_, _, zebra), Houses),
+  (   ShowResult = true ->
+      print_street(Houses)
+  ;   true).
+
+% zebra(ShowResult).
+
+memberA(X, List) :-
+   append(_, [X|_], List).
+
+% memberA(b, [a,b,c]).
+% memberA(d, [a,b,c]).
+
+set([], _).
+set(InList, OutList) :-
+  InList = [H1|T1],
+  memberchk(H1, OutList),
+  set(T1, OutList).
+
+% set([2, 2, foo, 1, foo, [], []], X).
+
+
+
+% flattenA([a,b,[c,d],[[1,2]],foo], Flat).
