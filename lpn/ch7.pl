@@ -23,9 +23,9 @@ even --> l, even, l.
 % phrase(even, P).
 
 even2 --> [].
-even2 --> b, b, even2, c, c.
-b --> [b].
-c --> [c].
+even2 --> b, even2, c.
+b --> [b, b].
+c --> [c, c].
 
 % phrase(even2, P).
 
@@ -35,3 +35,14 @@ a --> [a].
 d --> [d].
 
 % length(P, _), phrase(s3, P).
+
+prop --> [p].
+prop --> [q].
+prop --> [r].
+prop --> [not], prop.
+prop --> ['('], prop, [and], prop, [')']. 
+prop --> ['('], prop, [or], prop, [')'].
+prop --> ['('], prop, [implies], prop, [')'].  
+
+% length(P, _), phrase(prop, P).
+% prop([not, '(', p, implies, q, ')'], []).
