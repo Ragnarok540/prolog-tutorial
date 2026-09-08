@@ -1,0 +1,14 @@
+s
+    np
+        det
+            the
+        n
+            woman
+    vp
+        v
+            shoots
+        np
+            det
+                a
+            n
+                man
