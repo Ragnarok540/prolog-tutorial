@@ -9,7 +9,7 @@ drinks(fred, gin).
 pair(X, Y, Z) :-
     drinks(X, Z),
     drinks(Y, Z),
-    X \== Y.
+    X \= Y.
 
 % pair(X, john, martini).
 % pair(mary, susan, gin).
