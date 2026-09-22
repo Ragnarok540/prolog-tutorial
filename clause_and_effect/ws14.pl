@@ -1,4 +1,4 @@
-% Worksheet 14: Partial Maps with a ParaDleter
+% Worksheet 14: Partial Maps with a Parameter
 
 reduce([X|T], X, T).
 reduce([H|T], X, [H|L]) :-
@@ -16,7 +16,7 @@ a(b, f).
 a(b, c).
 a(f, c).
 
-path(X, X, _, end).
+path(X, X, _, end_of_path).
 path(X, Y, L, Route) :-
     a(X, Z),
     reduce(L, Z, L1),
