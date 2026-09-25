@@ -4,6 +4,7 @@ ms([], _, []).
 ms([H|T], N, [C|L]) :-
     C is H + N,
     ms(T, C, L).
+
 mapsum(A, B) :-
     ms(A, 0, B).
 
@@ -13,6 +14,7 @@ enum_aux([], _, []).
 enum_aux([H|T], N, [n(H, C)|L]) :-
     C is N + 1,
     enum_aux(T, C, L).
+
 enum(A, B) :-
    enum_aux(A, 0, B).
 
