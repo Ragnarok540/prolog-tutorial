@@ -118,3 +118,4 @@ flattenA(List, Flat) :-
 
 % flattenA([a,b,[c,d],[[1,2]],foo], Flat).
 % flattenA([a,b,[[[[[[[c,d]]]]]]],[[1,2]],foo,[]], Flat).
+% flattenA([a, [b,c], [d, e, [f, [g], h]]], X).
